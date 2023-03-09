@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -21,7 +20,21 @@ public class EmployeeService {
 
     public List<EmployeeDTO> getAllEmployees() {
         List<AbstractEmployeeEntity> employeeEntities =  dao.getAllEmployees();
-        return employeeEntities.stream().map(e -> convertor.convertToDTO(e)).collect(Collectors.toList());
+        return employeeEntities.stream().map(e -> convertor.convertToDTO(e)).toList();
     }
 
+    public List<EmployeeDTO> getAllManagers() {
+        List<AbstractEmployeeEntity> managersEntities =  dao.getAllManagers();
+        return managersEntities.stream().map(e -> convertor.convertToDTO(e)).toList();
+    }
+
+    public EmployeeDTO getEmployee(Long pk) {
+        AbstractEmployeeEntity employeeEntity = dao.getEmployee(pk).orElseThrow();
+        return convertor.convertToDTO(employeeEntity);
+    }
+
+    public List<EmployeeDTO> getSubordinates(Long managerPk) {
+        List<AbstractEmployeeEntity> employeeEntities =  dao.getSubordinates(managerPk);
+        return employeeEntities.stream().map(e -> convertor.convertToDTO(e)).toList();
+    }
 }

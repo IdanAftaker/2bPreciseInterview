@@ -8,9 +8,10 @@ import lombok.EqualsAndHashCode;
 @Entity
 @DiscriminatorValue(value = "Employee")
 public class EmployeeEntity extends AbstractEmployeeEntity {
+
 	public EmployeeEntity() { }
 
-	public EmployeeEntity(String firstName, String lastName, String position) {
-		super(firstName, lastName, position);
+	public EmployeeEntity(String firstName, String lastName, String position, Long managerPk) {
+		super(firstName, lastName, position, managerPk);
 	}
 }

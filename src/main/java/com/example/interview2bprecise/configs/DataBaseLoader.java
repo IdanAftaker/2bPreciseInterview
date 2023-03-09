@@ -20,16 +20,15 @@ public class DataBaseLoader implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception
 	{
-		AbstractEmployeeEntity employeeEntity1 = new EmployeeEntity("John", "Doe", "Data Scientist");
-		AbstractEmployeeEntity employeeEntity2 = new EmployeeEntity("Jane", "Smith", "Software Engineer");
-		AbstractEmployeeEntity employeeEntity3 = new EmployeeEntity("Bob", "Johnson", "Automation");
-		AbstractEmployeeEntity employeeEntity4 = new EmployeeEntity("Alice", "Williams", "Cybersecurity Analyst");
-		AbstractEmployeeEntity employeeEntity5 = new EmployeeEntity("Mike", "Brown", "UX/UI Designer");
-		AbstractEmployeeEntity managerEntity1 = new ManagerEntity("Sarah", "Miller", "Team Leader");
-		AbstractEmployeeEntity managerEntity2 = new EmployeeEntity("Emily", "Jones", "Product Manager");
-		AbstractEmployeeEntity managerEntity3 = new EmployeeEntity("David", "Garcia", "Director");
+		AbstractEmployeeEntity managerEntity1 = repository.save(new ManagerEntity("David", "Garcia", "Director", null));
+		AbstractEmployeeEntity managerEntity2 = repository.save(new ManagerEntity("Sarah", "Miller", "Team Leader",managerEntity1.getPk()));
+		AbstractEmployeeEntity managerEntity3 = repository.save(new ManagerEntity("Emily", "Jones", "Product Manager", managerEntity1.getPk()));
+		AbstractEmployeeEntity employeeEntity1 = new EmployeeEntity("John", "Doe", "Data Scientist", managerEntity2.getPk());
+		AbstractEmployeeEntity employeeEntity2 = new EmployeeEntity("Jane", "Smith", "Software Engineer", managerEntity2.getPk());
+		AbstractEmployeeEntity employeeEntity3 = new EmployeeEntity("Bob", "Johnson", "Automation", managerEntity2.getPk());
+		AbstractEmployeeEntity employeeEntity4 = new EmployeeEntity("Alice", "Williams", "Cybersecurity Analyst", managerEntity2.getPk());
+		AbstractEmployeeEntity employeeEntity5 = new EmployeeEntity("Mike", "Brown", "UX/UI Designer", managerEntity3.getPk());
 
-		repository.saveAll(List.of(employeeEntity1, employeeEntity2, employeeEntity3, employeeEntity4, employeeEntity5,
-				managerEntity1, managerEntity2, managerEntity3));
+		repository.saveAll(List.of(employeeEntity1, employeeEntity2, employeeEntity3, employeeEntity4, employeeEntity5));
 	}
 }

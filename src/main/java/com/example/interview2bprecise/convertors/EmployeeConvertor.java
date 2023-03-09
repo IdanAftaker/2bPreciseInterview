@@ -9,6 +9,6 @@ public class EmployeeConvertor implements BaseConvertor<AbstractEmployeeEntity> 
 
     @Override
     public EmployeeDTO convertToDTO(AbstractEmployeeEntity entity) {
-        return new EmployeeDTO(entity.getFirstName(), entity.getLastName(), entity.getPosition());
+        return new EmployeeDTO(entity.getPk(), entity.getFirstName(), entity.getLastName(), entity.getPosition(), entity.getManagerPk());
     }
 }

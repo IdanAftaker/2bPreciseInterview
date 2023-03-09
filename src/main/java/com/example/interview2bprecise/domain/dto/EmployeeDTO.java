@@ -4,17 +4,21 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class EmployeeDTO implements BaseDTO {
+    private Long pk;
     private String firstName;
     private String lastName;
     private String position;
+    private Long managerPk;
 
     public EmployeeDTO() {
     }
 
-    public EmployeeDTO(String firstName, String lastName, String position) {
+    public EmployeeDTO(Long pk, String firstName, String lastName, String position, Long managerPk) {
+        this.pk = pk;
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
+        this.managerPk = managerPk;
     }
 
     public String getFirstName() {
@@ -39,5 +43,21 @@ public class EmployeeDTO implements BaseDTO {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public Long getPk() {
+        return pk;
+    }
+
+    public void setPk(Long pk) {
+        this.pk = pk;
+    }
+
+    public Long getManagerPk() {
+        return managerPk;
+    }
+
+    public void setManagerPk(Long managerPk) {
+        this.managerPk = managerPk;
     }
 }

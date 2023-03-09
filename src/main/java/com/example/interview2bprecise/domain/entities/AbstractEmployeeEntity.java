@@ -11,8 +11,8 @@ import jakarta.persistence.Table;
 import java.util.Objects;
 
 @Entity
-@Table(name = "PERSON")
-@DiscriminatorColumn(name = "DISCRIM_PERSON", columnDefinition = "VARCHAR(32) DEFAULT 'Employee' NOT NULL")
+@Table(name = "EMPLOYEES")
+@DiscriminatorColumn(name = "DISCRIM_EMPLOYEE", columnDefinition = "VARCHAR(32) DEFAULT 'Employee' NOT NULL")
 public abstract class AbstractEmployeeEntity implements BaseEntity {
 
 	public static final int MAX_NAME_LENGTH_IN_DB = 64;
@@ -30,13 +30,18 @@ public abstract class AbstractEmployeeEntity implements BaseEntity {
 	@Column(length = MAX_NAME_LENGTH_IN_DB)
 	private String position;
 
+	@Column(name = "manager_pk")
+	private Long managerPk;
+
+
 
 	public AbstractEmployeeEntity() { }
 
-	public AbstractEmployeeEntity(String firstName, String lastName, String position) {
+	public AbstractEmployeeEntity(String firstName, String lastName, String position, Long managerPk) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.position = position;
+		this.managerPk = managerPk;
 	}
 
 	public Long getPk() {
@@ -63,6 +68,14 @@ public abstract class AbstractEmployeeEntity implements BaseEntity {
 		this.lastName = lastName;
 	}
 
+	public Long getManagerPk() {
+		return managerPk;
+	}
+
+	public void setManagerPk(Long managerPk) {
+		this.managerPk = managerPk;
+	}
+
 	public String getPosition() {
 		return position;
 	}
@@ -78,6 +91,7 @@ public abstract class AbstractEmployeeEntity implements BaseEntity {
 				", firstName='" + firstName + '\'' +
 				", lastName='" + lastName + '\'' +
 				", position='" + position + '\'' +
+				", managerPk=" + managerPk +
 				'}';
 	}
 
