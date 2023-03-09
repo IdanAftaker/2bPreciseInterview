@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/employees")
 public class EmployeeController {
 
     @Autowired
     EmployeeService service;
 
-    @GetMapping("/employees")
+    @GetMapping("")
     public List<EmployeeDTO> getAllEmployees() {
         return service.getAllEmployees();
     }
 
-    @GetMapping("/employees/{pk}")
+    @GetMapping("/{pk}")
     public EmployeeDTO getEmployee(@PathVariable("pk") Long pk) {
         return service.getEmployee(pk);
     }
@@ -32,7 +32,7 @@ public class EmployeeController {
         return service.getAllManagers();
     }
 
-    @GetMapping("/managers/subordinates/{pk}")
+    @GetMapping("/subordinates/{pk}")
     public List<EmployeeDTO> getSubordinates(@PathVariable("pk") Long managerPk) {
         return service.getSubordinates(managerPk);
     }
