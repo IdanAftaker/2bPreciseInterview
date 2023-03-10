@@ -1,42 +1,25 @@
-package com.example.interview2bprecise.domain.entities;
+package com.example.interview2bprecise.domain.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 import java.util.Date;
 
-@Entity
-@Table(name = "TASKS")
-public class TaskEntity implements BaseEntity {
-    public static final int MAX_DESC_LENGTH_IN_DB = 320;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+/**
+ * TaskDTO represent TaskEntity
+ */
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+public class TaskDTO implements BaseDTO {
     private Long pk;
-
-    @Column(length = MAX_DESC_LENGTH_IN_DB)
     private String description;
-
-    @Column
-    @Temporal(TemporalType.DATE)
     private Date assignDate;
-
-    @Column
-    @Temporal(TemporalType.DATE)
     private Date dueDate;
-
-    @Column
     private Long ownerPk;
 
-    public TaskEntity() {
+    public TaskDTO() {
     }
 
-    public TaskEntity(String description, Date assignDate, Date dueDate, Long ownerPk) {
+    public TaskDTO(Long pk, String description, Date assignDate, Date dueDate, Long ownerPk) {
+        this.pk = pk;
         this.description = description;
         this.assignDate = assignDate;
         this.dueDate = dueDate;
@@ -85,7 +68,7 @@ public class TaskEntity implements BaseEntity {
 
     @Override
     public String toString() {
-        return "TaskEntity{" +
+        return "TaskDTO{" +
                 "pk=" + pk +
                 ", description='" + description + '\'' +
                 ", assignDate=" + assignDate +

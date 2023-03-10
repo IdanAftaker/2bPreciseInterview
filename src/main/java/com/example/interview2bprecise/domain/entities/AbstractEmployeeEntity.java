@@ -10,6 +10,11 @@ import jakarta.persistence.Table;
 
 import java.util.Objects;
 
+
+/**
+ * Represent all employees
+ * Employees might be Manger, therefore there is a discriminator to identify managers
+ */
 @Entity
 @Table(name = "EMPLOYEES")
 @DiscriminatorColumn(name = "DISCRIM_EMPLOYEE", columnDefinition = "VARCHAR(32) DEFAULT 'Employee' NOT NULL")

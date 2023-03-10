@@ -5,7 +5,7 @@ import com.example.interview2bprecise.domain.entities.AbstractEmployeeEntity;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EmployeeConvertor implements BaseConvertor<AbstractEmployeeEntity> {
+public class EmployeeConverter implements BaseConverter<AbstractEmployeeEntity> {
 
     @Override
     public EmployeeDTO convertToDTO(AbstractEmployeeEntity entity) {

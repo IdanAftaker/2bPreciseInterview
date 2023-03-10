@@ -1,14 +1,18 @@
 package com.example.interview2bprecise.services;
 
-import com.example.interview2bprecise.convertors.EmployeeConvertor;
+import com.example.interview2bprecise.convertors.EmployeeConverter;
 import com.example.interview2bprecise.dao.EmployeeDAO;
 import com.example.interview2bprecise.domain.dto.EmployeeDTO;
 import com.example.interview2bprecise.domain.entities.AbstractEmployeeEntity;
+import com.example.interview2bprecise.validators.EmployeeValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service to handle all business logic for employees
+ */
 @Service
 public class EmployeeService {
 
@@ -16,7 +20,10 @@ public class EmployeeService {
     EmployeeDAO dao;
 
     @Autowired
-    EmployeeConvertor convertor;
+    EmployeeConverter convertor;
+
+    @Autowired
+    EmployeeValidator validator;
 
     public List<EmployeeDTO> getAllEmployees() {
         List<AbstractEmployeeEntity> employeeEntities =  dao.getAllEmployees();

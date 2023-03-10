@@ -1,43 +1,25 @@
-package com.example.interview2bprecise.domain.entities;
+package com.example.interview2bprecise.domain.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 import java.util.Date;
 
-@Entity
-@Table(name = "REPORTS")
-public class ReportEntity implements BaseEntity {
-    public static final int MAX_TEXT_LENGTH_IN_DB = 320;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+/**
+ * ReportDTO represent ReportEntity
+ */
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+public class ReportDTO implements BaseDTO {
     private Long pk;
-
-    @Column(length = MAX_TEXT_LENGTH_IN_DB)
     private String text;
-
-    @Column
-    @Temporal(TemporalType.DATE)
     private Date reportDate;
-
-    @Column
     private Long reporterPk;
-
-    @Column
     private Long ownerPk;
 
-
-    public ReportEntity() {
+    public ReportDTO() {
     }
 
-    public ReportEntity(String text, Date reportDate, Long reporterPk, Long ownerPk) {
+    public ReportDTO(Long pk, String text, Date reportDate, Long reporterPk, Long ownerPk) {
+        this.pk = pk;
         this.text = text;
         this.reportDate = reportDate;
         this.reporterPk = reporterPk;
@@ -86,7 +68,7 @@ public class ReportEntity implements BaseEntity {
 
     @Override
     public String toString() {
-        return "ReportEntity{" +
+        return "ReportDTO{" +
                 "pk=" + pk +
                 ", text='" + text + '\'' +
                 ", reportDate=" + reportDate +

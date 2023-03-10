@@ -2,6 +2,9 @@ package com.example.interview2bprecise.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+/**
+ * EmployeeDTO represent EmployeeEntity
+ */
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class EmployeeDTO implements BaseDTO {
     private Long pk;
@@ -59,5 +62,16 @@ public class EmployeeDTO implements BaseDTO {
 
     public void setManagerPk(Long managerPk) {
         this.managerPk = managerPk;
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeDTO{" +
+                "pk=" + pk +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", position='" + position + '\'' +
+                ", managerPk=" + managerPk +
+                '}';
     }
 }

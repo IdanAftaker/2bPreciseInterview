@@ -14,4 +14,15 @@ public class ManagerEntity extends AbstractEmployeeEntity {
     public ManagerEntity(String firstName, String lastName, String position, Long managerPk) {
         super(firstName, lastName, position, managerPk);
     }
+
+    @Override
+    public String toString() {
+        return "ManagerEntity{" +
+                "pk=" + getPk() +
+                ", firstName='" + getFirstName() + '\'' +
+                ", lastName='" + getLastName() + '\'' +
+                ", position='" + getPosition() + '\'' +
+                ", managerPk=" + getManagerPk() +
+                '}';
+    }
 }
