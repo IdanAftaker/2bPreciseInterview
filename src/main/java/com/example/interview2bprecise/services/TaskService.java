@@ -25,4 +25,9 @@ public class TaskService {
         List<TaskEntity> entities = dao.getAllTasks();
         return entities.stream().map(e -> converter.convertToDTO(e)).toList();
     }
+
+    public List<TaskDTO> getTasksByOwnerPk(Long ownerPk) {
+        List<TaskEntity> entities = dao.getTasksByOwnerPk(ownerPk);
+        return entities.stream().map(e -> converter.convertToDTO(e)).toList();
+    }
 }

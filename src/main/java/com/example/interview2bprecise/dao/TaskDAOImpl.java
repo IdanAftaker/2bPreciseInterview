@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class TaskDAOImpl implements TaskDAO {
@@ -16,5 +17,12 @@ public class TaskDAOImpl implements TaskDAO {
     @Override
     public List<TaskEntity> getAllTasks() {
         return repository.findAll();
+    }
+
+    @Override
+    public List<TaskEntity> getTasksByOwnerPk(Long ownerPk) {
+        return repository.findAll().stream()
+                .filter(x -> x.getOwnerPk() != null)
+                .filter(x -> x.getOwnerPk().equals(ownerPk)).toList();
     }
 }

@@ -13,4 +13,6 @@ public interface TaskDAO {
      * Get all tasks
      */
     List<TaskEntity> getAllTasks();
+
+    List<TaskEntity> getTasksByOwnerPk(Long ownerPk);
 }
