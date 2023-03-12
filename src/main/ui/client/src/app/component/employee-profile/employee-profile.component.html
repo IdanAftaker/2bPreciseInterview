@@ -1,0 +1,86 @@
+<ng-container class="container" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+  <table>
+    <tr>
+      <th scope="row">
+        <img src="/assets/profile.png" alt="employee photo" />
+      </th>
+      <td>
+        <div>
+          <table>
+            <tr>
+              <td>Name:</td>
+              <td>{{employee?.firstName}} {{employee?.lastName}}</td>
+            </tr>
+            <tr>
+              <td>Position:</td>
+              <td>{{employee?.position}}</td>
+            </tr>
+            <span><hr flex/></span>
+            <tr *ngIf="employee?.managerPk">
+              <td>Manager:</td>
+              <td>
+                <table>
+                  <tr>
+                    <td>
+                      {{manager?.firstName}} {{manager?.lastName}}
+                    </td>
+                    <td>
+                      <button>Report</button>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+  </table>
+<!--  <div *ngIf="employee">-->
+<!--    <app-task-list [employee]="employee"></app-task-list>-->
+<!--  </div>-->
+  <div class="card my-5">
+    <div class="card-body">
+      <h2>My Tasks</h2>
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Description</th>
+          <th scope="col">Due Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Task1</td>
+          <td>11/11/11</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card my-5">
+    <div class="card-body">
+      <h2>My Subordinates</h2>
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Position</th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let employee of subordinates">
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.position }}</td>
+          <td><button >Assign Task </button></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</ng-container>
