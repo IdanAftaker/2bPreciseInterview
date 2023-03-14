@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ReportRequestDTO} from "../model/dto/report-request-dto";
 import {Report} from "../model/report";
 import {EmployeeService} from "./employee.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class ReportService {
   private reports: Report[] | undefined;
   employeeService: EmployeeService
 
-  constructor( private http: HttpClient, employeeService: EmployeeService) {
+  constructor( private http: HttpClient, employeeService: EmployeeService, private snackBar: MatSnackBar) {
     this.employeeService = employeeService;
   }
 
@@ -27,6 +28,12 @@ export class ReportService {
     console.log(report)
     const requestDTO = new ReportRequestDTO(report, new Date(), employee.pk, employee.managerPk)
     this.http.post(this.reportUrl, requestDTO, this.httpOptions).subscribe(response => {
+      this.snackBar.open('Report sent to manager successfully.', 'Dismiss', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+        panelClass: ['mat-toolbar', 'mat-accent']
+      });
       return response
     });
 

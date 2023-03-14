@@ -15,11 +15,11 @@ import { TaskDialogComponent } from './component/task-dialog/task-dialog.compone
 import { ReportListComponent } from './component/report-list/report-list.component';
 import { TaskListComponent } from './component/task-list/task-list.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import {MatDatepicker, MatDatepickerModule} from "@angular/material/datepicker";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatInputModule} from "@angular/material/input";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -42,7 +42,8 @@ import {MatInputModule} from "@angular/material/input";
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [EmployeeService, TaskService, ReportService, MatDialog],
   bootstrap: [AppComponent]
