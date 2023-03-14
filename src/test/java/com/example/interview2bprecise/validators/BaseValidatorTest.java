@@ -12,7 +12,8 @@ public class BaseValidatorTest {
 
     @Test
     public void testValidatePK() throws Exception {
-        BaseValidator.validatePK(10L);
-        Assert.assertThrows(Exception.class, () -> BaseValidator.validatePK(-1L));
+        EmployeeValidator validator = new EmployeeValidator();
+        validator.validatePK(10L);
+        Assert.assertThrows(Exception.class, () -> validator.validatePK(-1L));
     }
 }

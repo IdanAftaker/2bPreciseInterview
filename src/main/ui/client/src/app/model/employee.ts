@@ -1,7 +1,7 @@
 export class Employee {
-  pk: number | undefined;
-  firstName: string | undefined;
-  lastName: string | undefined;
-  position: string | undefined;
-  managerPk: number | undefined;
+  pk: number;
+  firstName: string;
+  lastName: string;
+  position: string;
+  managerPk: number;
 }

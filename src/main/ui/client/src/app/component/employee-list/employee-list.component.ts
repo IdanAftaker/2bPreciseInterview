@@ -16,7 +16,7 @@ export class EmployeeListComponent implements OnInit {
 
   ngOnInit() { }
 
-  viewProfile(employee: Employee) {
-    this.router.navigate([`employees/${employee.pk}`])
+  async viewProfile(employee: Employee) {
+    await this.router.navigate([`employees/${employee.pk}`])
   }
 }

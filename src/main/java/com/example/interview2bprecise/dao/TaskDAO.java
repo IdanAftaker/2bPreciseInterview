@@ -1,5 +1,6 @@
 package com.example.interview2bprecise.dao;
 
+import com.example.interview2bprecise.domain.dto.TaskRequestDTO;
 import com.example.interview2bprecise.domain.entities.TaskEntity;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface TaskDAO {
     List<TaskEntity> getAllTasks();
 
     List<TaskEntity> getTasksByOwnerPk(Long ownerPk);
+
+    TaskEntity saveTask(TaskRequestDTO requestDTO);
 }

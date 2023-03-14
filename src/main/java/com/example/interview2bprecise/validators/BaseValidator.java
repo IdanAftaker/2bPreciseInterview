@@ -5,7 +5,7 @@ import com.google.common.annotations.VisibleForTesting;
 public abstract class BaseValidator {
 
     @VisibleForTesting
-    public static void validatePK(Long pk) throws Exception {
+    public void validatePK(Long pk) throws Exception {
         if (pk < 0) {
             throw new Exception("Invalid Primary Key");
         }

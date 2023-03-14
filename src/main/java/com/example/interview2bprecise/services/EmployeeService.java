@@ -35,7 +35,8 @@ public class EmployeeService {
         return managersEntities.stream().map(e -> convertor.convertToDTO(e)).toList();
     }
 
-    public EmployeeDTO getEmployee(Long pk) {
+    public EmployeeDTO getEmployee(Long pk) throws Exception {
+        validator.validatePK(pk);
         AbstractEmployeeEntity employeeEntity = dao.getEmployee(pk).orElseThrow();
         return convertor.convertToDTO(employeeEntity);
     }
