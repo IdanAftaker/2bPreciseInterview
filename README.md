@@ -28,25 +28,37 @@ This project was generated with Java version 17.
 ## Development server
 The server design to handle request and works
 
-####Controller 
-Mapping all HTTP request
-####Service
-Handle all BL includes:
+###Controller 
 
+Mapping all HTTP request
+
+
+###Service
+
+Handle all BL includes:
 - Validators
 - Converters
-####DAO
+
+
+###DAO
+
 Data access layers
-####Repository
+
+
+###Repository
+
 DB access
 
-####DB
+
+###DB
+
 Based on H2 DB
 
 ![My Image](screenshots/uml.png)
 
 --------
-####DB Schemas:
+###DB Schemas:
+
 
 - EMPLOYEES - contain discriminator of Employee/Manager
 
